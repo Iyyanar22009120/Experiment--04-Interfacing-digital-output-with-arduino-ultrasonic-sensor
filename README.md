@@ -1,4 +1,4 @@
-# EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -55,38 +55,51 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### PROGRAM 
+```
+#define echoPin 9
+#define trigPin 10
+
+long duration;
+int distance;
+
+void setup()
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034/2;
+  
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+}
+```
+## OUTPUT:
+## BEFORE STIMULATION:
+![BE ROBO](https://github.com/Iyyanar22009120/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/118680259/af4a166c-77fa-4866-8900-a58bd3298324)
+
+
+## AFTER STIMULATION:
+
+![AF ROBO](https://github.com/Iyyanar22009120/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/118680259/279c68a0-e045-41e3-97af-4052f2c21bec)
 
 
 
 
 
+### RESULTS:
+Thus the distance is measured  using an ultrasonic sensor.
 
-### Distance vs measurement table 
-
-			
- 
-			
-			
-			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
-			
-			
-			Average error = sum/ number of readings 
- 
-
-
-
-
-
-
-
-
-### RESULTS
 
 
 
